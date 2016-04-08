@@ -16,9 +16,6 @@ class Page(object):
 		into one useful abstraction.
 		'''
 
-		# To include later:
-		#	enhance with "find_elements" so greater generalize function
-
 		if locator == 'id':
 			return self.browser.find_element_by_id(locatee)
 		elif locator == 'name':
@@ -27,6 +24,24 @@ class Page(object):
 			return self.browser.find_element_by_class_name(locatee)
 		elif locator == 'xpath':
 			return self.browser.find_element_by_xpath(locatee)
+
+	def find_elements_by_locator(self, locator = '', locatee = ''):
+		'''
+		Acts like find_element_by_locator(), but returns list of
+		all matching elements.
+		'''
+
+		# Full disclosure, I haven't tested any of these
+		# just a quicky copy pasta from the singular version
+
+		if locator == 'id':
+			return self.browser.find_elements_by_id(locatee)
+		elif locator == 'name':
+			return self.browser.find_elements_by_name(locatee)
+		elif locator == 'class name':
+			return self.browser.find_elements_by_class_name(locatee)
+		elif locator == 'xpath':
+			return self.browser.find_elements_by_xpath(locatee)
 
 	def wait_for_clickable(self, web_element, timeout = 10):
 		'''
